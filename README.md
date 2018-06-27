@@ -1,6 +1,6 @@
 # Loggee
 
-Zero-dependency console logger with prefixed output and log-level muting
+Zero-dependency console logger with prefixed output and log-level muting.
 
 ## Installation
 ```bash
@@ -24,11 +24,11 @@ logger.warn(...);
 logger.error(...);
 ```
 
-#### Setting log level
+#### Log level muting
 ```js
 const loggee = require('loggee');
 
-loggee.setLogLevel('error'); // only errors shown
+loggee.setLogLevel('error'); // show only errors
 loggee.setLogLevel('none');  // mute
 ```
 
