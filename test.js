@@ -5,7 +5,7 @@ const loggee = require('./index');
 const logger = loggee.create('prefix');
 
 afterEach(() => {
-  sinon.reset();
+  sinon.restore();
 });
 
 it('debug', () => {
