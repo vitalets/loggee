@@ -17,7 +17,7 @@
   "scripts": {
     "code": "eslint *.js",
     "test": "mocha test.js",
-    "prerelease": "run-s code test",
+    "prerelease": "npm run code && npm t",
     "release": "npm version $VER && npm publish",
     "postrelease": "git push --follow-tags --no-verify",
     "release-patch": "VER=patch npm run release",
