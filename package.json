@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "eslint": "^4.15.0",
+    "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "mocha": "^5.2.0",
     "sinon": "^6.0.1"
@@ -37,8 +38,5 @@
   "keywords": [
     "logger"
   ],
-  "license": "MIT",
-  "dependencies": {
-    "husky": "^0.14.3"
-  }
+  "license": "MIT"
 }
