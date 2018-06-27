@@ -1,6 +1,6 @@
 {
   "name": "loggee",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zero-dependency console logger with prefixed output and log-level muting",
   "author": {
     "name": "Vitaliy Potapov",
