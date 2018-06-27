@@ -48,7 +48,7 @@ module.exports = class Logger {
   _output(level, args) {
     if (passLevel(level)) {
       args = [...this.prefix, ...args];
-      console[level](...args);
+      console[level](...args);  // eslint-disable-line no-console
     }
   }
 };
