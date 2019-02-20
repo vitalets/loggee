@@ -1,7 +1,7 @@
 {
   "name": "loggee",
   "version": "0.1.3",
-  "description": "Zero-dependency console logger with prefixed output and log-level muting",
+  "description": "Tiny zero-dependency JavaScript logger with namespaces",
   "author": {
     "name": "Vitaliy Potapov",
     "email": "noginsk@rambler.ru"

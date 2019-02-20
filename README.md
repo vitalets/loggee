@@ -1,6 +1,6 @@
 # Loggee
 
-Zero-dependency console logger with prefixed output and log-level muting.
+Tiny JavaScript logger with namespaces. Work in both Node.js and browser.
 
 ## Installation
 ```bash
@@ -8,23 +8,19 @@ npm install loggee --save
 ```
 
 ## Usage
-#### Prefixed output
+Require and set namespace in one line:
 ```js
 const logger = require('loggee').create('My module');
  
 logger.log('Hello world!'); // => [My module] Hello World!
+logger.info('Hello world!'); // => [My module] Hello World!
+logger.warn('Hello world!'); // => [My module] Hello World!
+logger.error('Hello world!'); // => [My module] Hello World!
+logger.debug('Hello world!'); // => [My module] Hello World!
 ```
 
-#### Different methods
-```js
-logger.debug(...);
-logger.log(...);
-logger.info(...);
-logger.warn(...);
-logger.error(...);
-```
-
-#### Log level muting
+#### Mute
+You can mute logger globally:
 ```js
 const loggee = require('loggee');
 
