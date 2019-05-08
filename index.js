@@ -7,6 +7,7 @@ const DEFAULT_LOG_LEVEL = 'log';
 
 let currentLogLevelPos = LOG_LEVELS.indexOf(DEFAULT_LOG_LEVEL);
 let onErrorHandler;
+let muted = false;
 
 module.exports = class Loggee {
   static create(prefix) {
@@ -20,6 +21,10 @@ module.exports = class Loggee {
     } else {
       currentLogLevelPos = newPos;
     }
+  }
+
+  static mute(value = true) {
+    muted = value;
   }
 
   static setOnErrorHandler(handler) {
@@ -62,7 +67,7 @@ module.exports = class Loggee {
   }
 
   _output(level, args) {
-    if (passLevel(level)) {
+    if (!muted && passLevel(level)) {
       args = [...this.prefix, ...args];
       console[level](...args);  // eslint-disable-line no-console
     }

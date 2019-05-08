@@ -46,6 +46,11 @@ Sets new log level for all loggers.
 
 Sets handler to be called on every error.
 
+#### mute(value)
+  * `value {Boolean}`
+
+Mute/unmute all loggers.
+
 #### logger.debug(...)
 Outputs debug message.
 
