@@ -41,6 +41,11 @@ Creates logger with specified prefix.
 
 Sets new log level for all loggers.
 
+#### setOnErrorHandler(handler)
+  * `handler {Function}`
+
+Sets handler to be called on every error.
+
 #### logger.debug(...)
 Outputs debug message.
 

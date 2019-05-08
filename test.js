@@ -1,15 +1,16 @@
 
 const sinon = require('sinon');
-const loggee = require('./index');
+const assert = require('assert');
+const Loggee = require('./index');
 
-const logger = loggee.create('prefix');
+const logger = Loggee.create('prefix');
 
 afterEach(() => {
   sinon.restore();
 });
 
 it('debug', () => {
-  loggee.setLogLevel('debug');
+  Loggee.setLogLevel('debug');
   const stub = sinon.stub(console, 'debug');
   logger.debug('foo');
   stub.restore();
@@ -39,7 +40,27 @@ it('warn', () => {
 
 it('error', () => {
   const stub = sinon.stub(console, 'error');
-  logger.error('foo');
+  const error = new Error('foo');
+  logger.error(error);
   stub.restore();
-  sinon.assert.calledWith(stub, '[prefix]', 'foo');
+  sinon.assert.calledOnce(stub);
+  sinon.assert.calledWith(stub, '[prefix]', error);
+});
+
+it('error: call onErrorHandler', () => {
+  const stub = sinon.stub(console, 'error');
+  const handler = sinon.spy();
+  Loggee.setOnErrorHandler(handler);
+  const error = new Error('foo');
+  logger.error(error);
+  stub.restore();
+  sinon.assert.calledWith(handler, error);
+});
+
+it('error: if onErrorHandler throws - do nothing', () => {
+  const stub = sinon.stub(console, 'error');
+  const handler = () => { throw new Error('bar'); };
+  Loggee.setOnErrorHandler(handler);
+  assert.doesNotThrow(() => logger.error('foo'));
+  stub.restore();
 });

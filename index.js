@@ -1,15 +1,16 @@
 /**
- * Logger
+ * Loggee
  */
 
 const LOG_LEVELS = ['debug', 'log', 'info', 'warn', 'error', 'none'];
 const DEFAULT_LOG_LEVEL = 'log';
 
 let currentLogLevelPos = LOG_LEVELS.indexOf(DEFAULT_LOG_LEVEL);
+let onErrorHandler;
 
-module.exports = class Logger {
+module.exports = class Loggee {
   static create(prefix) {
-    return new Logger(prefix);
+    return new Loggee(prefix);
   }
 
   static setLogLevel(level) {
@@ -18,6 +19,20 @@ module.exports = class Logger {
       throw new Error(`Incorrect log level: ${level}. Possible levels are: ${LOG_LEVELS.join(', ')}`);
     } else {
       currentLogLevelPos = newPos;
+    }
+  }
+
+  static setOnErrorHandler(handler) {
+    onErrorHandler = handler;
+  }
+
+  static _callOnErrorHandler(args) {
+    if (onErrorHandler) {
+      try {
+        onErrorHandler(...args);
+      } catch (e) {
+        // better to nothing here to avoid infinite loop as logger.error() usually handles uncaught exceptions
+      }
     }
   }
 
@@ -43,6 +58,7 @@ module.exports = class Logger {
 
   error(...args) {
     this._output('error', args);
+    Loggee._callOnErrorHandler(args);
   }
 
   _output(level, args) {

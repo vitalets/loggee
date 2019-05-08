@@ -3,6 +3,7 @@ export = Loggee;
 declare class Loggee {
     static create(prefix?: string): Loggee;
     static setLogLevel(level: Loggee.Level): void;
+    static setOnErrorHandler(handler: () => void): void;
     constructor(prefix?: string);
     debug(...args: any[]): void;
     log(...args: any[]): void;
