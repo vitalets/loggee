@@ -29,11 +29,11 @@
     "*.js": "eslint"
   },
   "devDependencies": {
-    "eslint": "^4.15.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.0",
-    "mocha": "^5.2.0",
-    "sinon": "^6.0.1"
+    "eslint": "^5.16.0",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2"
   },
   "keywords": [
     "logger"
